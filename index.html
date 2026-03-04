@@ -24,9 +24,10 @@
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.5;
+            overflow-x: hidden;
         }
 
-        /* HEADER ULTRA-COMPACT */
+        /* HEADER */
         header {
             background: rgba(0,0,0,0.98);
             position: sticky;
@@ -40,47 +41,23 @@
             gap: 8px;
         }
 
-        .logo-text { 
-            font-family: 'Bebas Neue', cursive; 
-            font-size: 1.2rem; 
-            color: var(--light); 
-            text-decoration: none; 
-            white-space: nowrap;
-        }
+        .logo-text { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--light); text-decoration: none; }
         .logo-text span { color: var(--primary); }
 
-        /* GRUP BUTOANE MIJLOC - ACUM 3 BUTOANE */
-        .header-mid-actions {
-            display: flex;
-            gap: 5px;
-            justify-content: center;
-            flex: 1;
-        }
+        .header-mid-actions { display: flex; gap: 5px; justify-content: center; flex: 1; }
 
         .btn-mini {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px; 
-            height: 32px;
-            border-radius: 6px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 40px; border-radius: 6px;
+            color: white; text-decoration: none; font-size: 0.85rem;
         }
         .btn-call { background: var(--primary); }
         .btn-wa { background: #25d366; }
         .btn-map { background: var(--map-blue); }
 
-        /* STATUS BADGE */
         .status-badge {
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-size: 0.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            white-space: nowrap;
+            padding: 3px 6px; border-radius: 4px;
+            font-size: 1rem; font-weight: bold; text-transform: uppercase;
         }
         .open { background: var(--success); color: white; }
         .closed { background: var(--danger); color: white; }
@@ -94,52 +71,86 @@
         }
         .hero h1 { font-family: 'Bebas Neue'; font-size: 2.5rem; color: var(--accent); }
 
-        /* MENU SECTION */
-        .menu-section { padding: 25px 15px; }
-        .section-title { font-family: 'Bebas Neue'; font-size: 2rem; text-align: center; margin-bottom: 20px; color: var(--primary); }
+        /* SLIDER CSS */
+        .menu-section { padding: 25px 0 25px 15px; }
         
-        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .menu-card {
-            background: #1a1a1a;
-            border-radius: 12px;
+        .section-header {
             display: flex;
-            padding: 10px;
-            align-items: center;
-            border: 1px solid #222;
+            flex-direction: column; /* Pune elementele unul sub altul */
+            align-items: center;    /* Le centrează pe amândouă */
+            gap: 10px;              /* Spațiu între titlu și săgeți */
+            margin-bottom: 20px;
         }
-        .menu-card img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
-        .menu-info { padding-left: 12px; flex: 1; }
-        .price { color: var(--accent); font-weight: bold; font-family: 'Bebas Neue'; font-size: 1.1rem; }
 
-        /* MAP SECTION */
+        .section-title { font-family: 'Bebas Neue'; font-size: 2rem; color: var(--primary); margin-bottom: 0; }
+
+        /* SĂGEȚI INDICATOARE */
+        .slide-hints {
+            display: flex;
+            gap: 10px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .slide-hints i {
+            animation: bounceSide 1.5s infinite;
+        }
+        @keyframes bounceSide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .menu-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding-right: 20px;
+            scrollbar-width: none;
+        }
+        .menu-slider::-webkit-scrollbar { display: none; }
+
+        .menu-card {
+            flex: 0 0 80%;
+            max-width: 300px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid #222;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .menu-card img { width: 100%; height: 180px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; }
+        .menu-info h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .menu-info p { font-size: 0.85rem; color: #aaa; margin-bottom: 10px; min-height: 40px; }
+        .price { color: var(--accent); font-weight: bold; font-family: 'Bebas Neue'; font-size: 1.4rem; display: block; }
+
+        /* MAP */
         .map-wrapper { padding: 20px 15px; background: #000; text-align: center; }
         .map-container { width: 100%; height: 250px; border: none; border-radius: 12px; margin-top: 10px; }
 
+        footer { padding: 30px; text-align: center; color: #ffffff; font-size: 0.7rem; }
+
         @media (min-width: 768px) {
-            header { padding: 12px 5%; }
-            .logo-text { font-size: 1.8rem; }
-            .btn-mini { width: 40px; height: 40px; font-size: 1rem; }
-            .menu-grid { grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 0 auto; }
+            .slide-hints { display: none; }
+            .menu-slider { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; padding-right: 15px; }
+            .menu-card { flex: unset; max-width: none; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-text">SMASH<span>.BURGER.KEBAB</span></a>
-
+        <a href="#" class="logo-text">SMASH<span>.BK</span></a>
         <div class="header-mid-actions">
-            <a href="tel:0712345678" class="btn-mini btn-call" title="Sună">
-                <i class="fas fa-phone"></i>
-            </a>
-            <a href="https://wa.me/40712345678" class="btn-mini btn-wa" title="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="#locatie-harta" class="btn-mini btn-map" title="Locație">
-                <i class="fas fa-location-dot"></i>
-            </a>
+            <a href="tel:0712345678" class="btn-mini btn-call"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/40712345678" class="btn-mini btn-wa"><i class="fab fa-whatsapp"></i></a>
+            <a href="#locatie-harta" class="btn-mini btn-map"><i class="fas fa-location-dot"></i></a>
         </div>
-
         <div id="status-container"></div>
     </header>
 
@@ -149,123 +160,97 @@
     </section>
 
     <section class="menu-section">
-        <h2 class="section-title">MENIU Burger</h2>
-        <div class="menu-grid">
+        <div class="section-header">
+            <h2 class="section-title">MENIU Burger</h2>
+            <div class="slide-hints">
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-hand-pointer"></i>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="menu-slider">
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger">
                 <div class="menu-info">
                     <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
+                    <p>Vită, Cheddar, Sos Secret, Castraveți.</p>
                     <span class="price">32 MDL</span>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
+                <div class="menu-info">
+                    <h3>Smash Cheese</h3>
+                    <p>Dublu Cheddar, Vită Angus, Ceapă Caramelizată.</p>
+                    <span class="price">35 MDL</span>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
+                <div class="menu-info">
+                    <h3>Smash Cheese</h3>
+                    <p>Dublu Cheddar, Vită Angus, Ceapă Caramelizată.</p>
+                    <span class="price">35 MDL</span>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
+                <div class="menu-info">
+                    <h3>Smash Cheese</h3>
+                    <p>Dublu Cheddar, Vită Angus, Ceapă Caramelizată.</p>
+                    <span class="price">35 MDL</span>
+                </div>
+            </div>
+
+             <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
+                <div class="menu-info">
+                    <h3>Smash Cheese</h3>
+                    <p>Dublu Cheddar, Vită Angus, Ceapă Caramelizată.</p>
+                    <span class="price">35 MDL</span>
                 </div>
             </div>
 
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400" alt="Burger">
                 <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
+                    <h3>Smash Spicy</h3>
+                    <p>Sos iute, Jalapeños, Vită, Bacon.</p>
+                    <span class="price">38 MDL</span>
                 </div>
             </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            </div>
+        </div>
     </section>
 
-     <section class="menu-section">
-        <h2 class="section-title">MENIU Kebab</h2>
-        <div class="menu-grid">
+    <section class="menu-section" style="background-color: #111;">
+        <div class="section-header">
+            <h2 class="section-title">MENIU Kebab</h2>
+            <div class="slide-hints">
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-hand-pointer"></i>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        <div class="menu-slider">
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
+                <img src="https://images.unsplash.com/photo-1662111100342-9993306236b2?w=400" alt="Kebab">
                 <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
+                    <h3>Kebab de Vită</h3>
+                    <p>Lipie caldă, carne vită, legume proaspete.</p>
+                    <span class="price">30 MDL</span>
                 </div>
             </div>
-
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
+                <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400" alt="Kebab">
                 <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
+                    <h3>Kebab de Pui</h3>
+                    <p>Pui la grătar, sos iaurt, cartofi pai.</p>
+                    <span class="price">28 MDL</span>
                 </div>
             </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" alt="Burger">
-                <div class="menu-info">
-                    <h3>Smash Classic</h3>
-                    <p>Vită, Cheddar, Sos Secret.</p>
-                    <span class="price">32 MDL</span>
-                </div>
-            </div>
-
-            </div>
+        </div>
     </section>
 
     <section class="map-wrapper" id="locatie-harta">
@@ -274,14 +259,13 @@
         <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d171247.9355554157!2d28.711802951381333!3d47.00166649727407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c3628b369a1%3A0x23649963e6f98894!2zQ2hpyJlpbsSDdSwgTW9sZG92YQ!5e0!3m2!1sro!2sro!4v1700000000000!5m2!1sro!2sro"></iframe>
     </section>
 
-    <footer style="padding: 30px; text-align: center; color: #ffffff; font-size: 0.7rem; border-top: 1px solid #1a1a1a;">
+    <footer>
         <p>© 2026 SMASH.BURGER.KEBAB - Toate drepturile rezervate</p>
     </footer>
 
     <script>
         function checkStatus() {
-            const now = new Date();
-            const hour = now.getHours();
+            const hour = new Date().getHours();
             const container = document.getElementById('status-container');
             if (hour >= 11 && hour < 22) {
                 container.innerHTML = '<span class="status-badge open">DESCHIS</span>';
