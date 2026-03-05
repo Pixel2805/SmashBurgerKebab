@@ -6,147 +6,13 @@
     <title>Smash.Burger.Kebab</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff4500;
-            --accent: #ffcc00;
-            --dark: #0f0f0f;
-            --light: #ffffff;
-            --success: #2ecc71;
-            --danger: #d00000;
-            --map-blue: #4285F4;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        /* HEADER */
-        header {
-            background: rgba(0,0,0,0.98);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            padding: 8px 3%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-text { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--light); text-decoration: none; }
-        .logo-text span { color: var(--primary); }
-
-        .header-mid-actions { display: flex; gap: 5px; justify-content: center; flex: 1; }
-
-        .btn-mini {
-            display: flex; align-items: center; justify-content: center;
-            width: 60px; height: 40px; border-radius: 6px;
-            color: white; text-decoration: none; font-size: 0.85rem;
-        }
-        .btn-call { background: var(--primary); }
-        .btn-wa { background: #25d366; }
-        .btn-map { background: #144088; }
-
-        .status-badge {
-            padding: 3px 6px; border-radius: 4px;
-            font-size: 1rem; font-weight: bold; text-transform: uppercase;
-        }
-        .open { background: var(--success); color: white; }
-        .closed { background: var(--danger); color: white; }
-
-        /* HERO */
-        .hero {
-            padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/logosmash.jpg') no-repeat center;
-            background-size: cover;
-            text-align: center;
-        }
-        .hero h1 { font-family: 'Bebas Neue'; font-size: 2.5rem; color: var(--accent); }
-
-        /* SLIDER CSS */
-        .menu-section { padding: 25px 0 25px 15px; }
-        
-        .section-header {
-            display: flex;
-            flex-direction: column; /* Pune elementele unul sub altul */
-            align-items: center;    /* Le centrează pe amândouă */
-            gap: 10px;              /* Spațiu între titlu și săgeți */
-            margin-bottom: 20px;
-        }
-
-        .section-title { font-family: 'Bebas Neue'; font-size: 2rem; color: var(--danger); margin-bottom: 0; }
-
-        /* SĂGEȚI INDICATOARE */
-        .slide-hints {
-            display: flex;
-            gap: 10px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        .slide-hints i {
-            animation: bounceSide 1.5s infinite;
-        }
-        @keyframes bounceSide {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-
-        .menu-slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 15px;
-            padding-right: 20px;
-            scrollbar-width: none;
-        }
-        .menu-slider::-webkit-scrollbar { display: none; }
-
-        .menu-card {
-            flex: 0 0 80%;
-            max-width: 300px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 15px;
-            border: 1px solid #222;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .menu-card img { width: 100%; height: 180px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; }
-        .menu-info h3 { font-size: 1.2rem; margin-bottom: 5px; }
-        .menu-info p { font-size: 0.85rem; color: #aaa; margin-bottom: 10px; min-height: 40px; }
-        .price { color: var(--accent); font-weight: bold; font-family: 'Bebas Neue'; font-size: 1.4rem; display: block; }
-
-        /* MAP */
-        .map-wrapper { padding: 20px 15px; background: #000; text-align: center; }
-        .map-container { width: 100%; height: 250px; border: none; border-radius: 12px; margin-top: 10px; }
-
-        footer { padding: 30px; text-align: center; color: #ffffff; font-size: 0.7rem; }
-
-        @media (min-width: 768px) {
-            .slide-hints { display: none; }
-            .menu-slider { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; padding-right: 15px; }
-            .menu-card { flex: unset; max-width: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
     <a href="#" class="logo-container">
-        <img src="logosmash.jpg" style = "width: 70px; height: auto; border-radius: 15px;" alt="Smash Logo" class="header-logo">
+        <img src="logosmash.jpg" style="width: 70px; height: auto; border-radius: 15px;" alt="Smash Logo" class="header-logo">
     </a>
     
     <div class="header-mid-actions">
@@ -161,7 +27,6 @@
         <h1>SMASH.BURGER.KEBAB</h1>
         <p>NU E DOAR BURGER. E UN SMASH.</p>
     </section>
-
 
     <section class="menu-section">
         <div class="section-header">
@@ -189,7 +54,6 @@
                     <span class="price">46 MDL</span>
                 </div>
             </div>
-
              <div class="menu-card">
                 <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
                 <div class="menu-info">
@@ -198,7 +62,6 @@
                     <span class="price">69 MDL</span>
                 </div>
             </div>
-
              <div class="menu-card">
                 <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
                 <div class="menu-info">
@@ -207,7 +70,6 @@
                     <span class="price">79 MDL</span>
                 </div>
             </div>
-
             <div class="menu-card">
                 <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
                 <div class="menu-info">
@@ -216,7 +78,6 @@
                     <span class="price">84 MDL</span>
                 </div>
             </div>
-
             <div class="menu-card">
                 <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400" alt="Burger">
                 <div class="menu-info">
@@ -225,10 +86,8 @@
                     <span class="price">97 MDL</span>
                 </div>
             </div>
-
         </div>
     </section>
-
 
     <section class="menu-section" style="background-color: #111;">
         <div class="section-header">
@@ -248,7 +107,6 @@
                     <span class="price">28 MDL</span>
                 </div>
             </div>
-
             <div class="menu-card">
                 <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400" alt="Kebab">
                 <div class="menu-info">
@@ -257,11 +115,8 @@
                     <span class="price">28 MDL</span>
                 </div>
             </div>
-
         </div>
     </section>
-
-    
 
     <section class="menu-section">
         <div class="section-header">
@@ -289,7 +144,6 @@
                     <span class="price">46 MDL</span>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -297,48 +151,39 @@
     <div class="section-header" style="text-align: center;">
         <h2 class="section-title">Adaos</h2>
     </div>
-    
     <div style="display: flex; justify-content: center; padding: 0 15px;">
         <div class="menu-card" style="flex: 1; max-width: 320px; scroll-snap-align: none;">
             <div class="menu-info" style="width: 100%;">
-                
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dotted #333; padding-bottom: 5px;">
                     <h3 style="margin: 0;">Carne</h3>
                     <span class="price">- 14 MDL</span>
                 </div>
-
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dotted #333; padding-bottom: 5px;">
                     <h3 style="margin: 0;">Cedar</h3>
                     <span class="price">- 5 MDL</span>
                 </div>
-
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dotted #333; padding-bottom: 5px;">
                     <h3 style="margin: 0;">Bacon</h3>
                     <span class="price">- 10 MDL</span>
                 </div>
-
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dotted #333; padding-bottom: 5px;">
                     <h3 style="margin: 0;">Verdețuri</h3>
                     <span class="price">- 8 MDL</span>
                 </div>
-
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                     <h3 style="margin: 0;">Sosuri</h3>
                     <span class="price">- 6 MDL</span>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
-
 
     <section class="map-wrapper" id="locatie-harta" style="padding: 40px 20px;">
     <h2 class="section-title" style="margin-bottom: 10px;">LOCAȚIE</h2>
     <p style="margin-bottom: 20px; color: #fff; font-size: 0.9rem; text-align: center;">
         <i class="fas fa-map-marker-alt" style="color: #ff4500;"></i> str. Alexandru cel Bun 109, Hîncești
     </p>
-    
     <div style="width: 100%; max-width: 800px; margin: 0 auto;">
         <iframe 
             class="map-container" 
@@ -355,17 +200,6 @@
         <p>balanantonin8@gmail.com📲</p>
     </footer>
 
-    <script>
-        function checkStatus() {
-            const hour = new Date().getHours();
-            const container = document.getElementById('status-container');
-            if (hour >= 10 && hour < 22) {
-                container.innerHTML = '<span class="status-badge open">DESCHIS</span>';
-            } else {
-                container.innerHTML = '<span class="status-badge closed">ÎNCHIS</span>';
-            }
-        }
-        checkStatus();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
