@@ -56,7 +56,7 @@ header {
 /* HERO */
 .hero {
     padding: 40px 20px;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/logosmash.jpg') no-repeat center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero-background.jpg') no-repeat center;
     background-size: cover;
     text-align: center;
 }
